@@ -79,6 +79,14 @@ void loop () {
   if (rainValprev<900 && counter==false) {
     Serial.println("It's Raining, Pick up your clothes");
     analogWrite(A5, 255);
+    sdata1 = PrintR;
+   sdata2 = PrintL;
+   sdata3 = rainValprev;
+   cdata = cdata + sdata1+","+sdata2+","+sdata3; // comma will be used a delimeter
+   Serial.println(cdata); 
+   nodemcu.println(cdata);
+   delay(2000); // 100 milli seconds
+   cdata = "";
     delay(10000);
     analogWrite(A5, 0);
 
